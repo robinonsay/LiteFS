@@ -1,9 +1,9 @@
 name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: LiteFS
 on: [push]
 jobs:
   test:
-    runs-on: [ubuntu-latest, self-hosted]
+    runs-on: [self-hosted, ubuntu-latest]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3 
