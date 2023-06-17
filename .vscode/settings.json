@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "litefs_str.h": "c",
+        "litefs_io.h": "c"
+    }
+}

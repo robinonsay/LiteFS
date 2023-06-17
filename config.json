@@ -1,0 +1,5 @@
+{
+    "mission": null,
+    "app_prefix": "/usr/local/lib",
+    "secret_key": "./secret.key"
+}
