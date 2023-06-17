@@ -2,11 +2,11 @@ name: GitHub Actions Demo
 run-name: LiteFS Workflow
 on: [push]
 jobs:
-  tests:
+  ubuntu-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Build the Docker image
         run: docker build -t litefs:latest .
       - name: Run the Docker image
-        run: docker run -a=STDOUT -a=STDERR -t -i litefs:latest
+        run: docker run -a=STDOUT -a=STDERR litefs:latest
