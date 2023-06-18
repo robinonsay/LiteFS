@@ -17,6 +17,7 @@ RUN make
 RUN ldconfig /usr/src/litefs/out/lib
 
 # This command runs your application, comment out this line to compile only
-CMD ["./out/litefs"]
+WORKDIR /usr/src/litefs/out
+CMD ["./litefs"]
 
 LABEL Name=litefs Version=0.0.1

@@ -17,9 +17,9 @@ PLATFORM ?= POSIX
 
 export CC OUT
 
-.PHONY: clean lib
+.PHONY: clean lib config
 
-all: $(TARGET) lib
+all: $(TARGET) lib config
 
 $(TARGET): $(LIB_OUT)/$(LIB_TARGET)
 	$(CC) $(CFLAGS) $(INCLUDE_DIR) -fPIC -o $(OUT)/$@ $(SRC) $(LINK_FLAGS) $(LINK_DIRS) $(LINK_LIBS)
@@ -32,14 +32,24 @@ $(LIB_OUT)/$(LIB_TARGET): $(LIB_OUT)
 	fi
 
 $(LIB_OUT): $(OUT)
-	mkdir $(LIB_OUT)
+	if ! [ -d $(LIB_OUT) ]; then \
+		mkdir $(LIB_OUT); \
+	fi
+
+config: $(OUT)/config.o
+
+$(OUT)/config.o: $(OUT)
+	./scripts/gen_config.py $(OUT)
 
 $(OUT):
-	mkdir $(OUT)
+	if ! [ -d $(OUT) ]; then \
+		mkdir $(OUT); \
+	fi
+	
 
 clean:
 	if [ -d $(OUT) ]; then \
-	rm -rf $(OUT); \
+		rm -rf $(OUT); \
 	fi
 
 
