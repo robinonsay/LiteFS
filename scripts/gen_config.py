@@ -20,8 +20,11 @@ if __name__ == '__main__':
     with open(config_path, 'r') as f:
         config = json.load(f)
 
-    with open(secret_path, 'rb') as f:
-        secret = f.read()
+    if secret_path.exists():
+        with open(secret_path, 'rb') as f:
+            secret = f.read()
+    else:
+        secret = b'\0' * 32
 
     config_packed = struct.pack(f"{MAX_MISSION_NAME}s{MAX_PATH_LEN}s{SECRET_LENGTH}s",
                                 config['mission'].encode('ASCII'),
