@@ -1,5 +1,5 @@
 {
     "mission": "None",
-    "app_prefix": "/usr/local/lib",
+    "app_prefix": "/usr/src/litefs/out/apps",
     "secret_key": "./secret.key"
 }
