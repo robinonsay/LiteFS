@@ -7,14 +7,15 @@ FROM gcc:latest
 
 # These commands copy your files into the specified directory in the image
 # and set that as the working location
-COPY . /usr/src/litefs
-WORKDIR /usr/src/litefs
 
 # This command compiles your app using GCC, adjust for your source code
 RUN apt-get -y update
 RUN apt-get -y install gdb gdbserver
+COPY . /usr/src/litefs
+WORKDIR /usr/src/litefs
 RUN make
 RUN ldconfig /usr/src/litefs/out/lib
+RUN cd example_app && make
 
 # This command runs your application, comment out this line to compile only
 WORKDIR /usr/src/litefs/out

@@ -5,11 +5,11 @@
 
 #include "litefs_app.h"
 
-void LiteFS_Register();
 uint32 LiteFS_AppInit();
 uint32 LiteFS_AppMain();
 void LiteFS_AppExit();
 
+void LiteFS_Register();
 #ifndef LITEFS_APP_CUSTOM_REGISTER
 LITEFS_APP_T api = {0};
 void LiteFS_Register()

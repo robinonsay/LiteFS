@@ -13,14 +13,15 @@ INCLUDE_DIR := -I./src
 SRC:= ./src/litefs.c
 LIB_SRCS := $(filter-out $(SRC), $(wildcard ./src/*.c))
 POSIX_SRCS := $(wildcard ./src/posix/*.c)
-POSIX_LIBS := -lrt -ldl
+POSIX_LIBS := -ldl
+# POSIX_LIBS := -lrt -ldl
 PLATFORM ?= POSIX
 
 export CC OUT
 
-.PHONY: clean lib config
+.PHONY: clean lib config example
 
-all: $(TARGET) lib config
+all: $(TARGET) lib config example
 
 $(TARGET): $(LIB_OUT)/$(LIB_TARGET)
 	$(CC) $(CFLAGS) $(INCLUDE_DIR) -fPIC -o $(OUT)/$@ $(SRC) $(LINK_FLAGS) $(LINK_DIRS) $(LINK_LIBS)
@@ -47,6 +48,8 @@ $(OUT):
 		mkdir $(OUT); \
 	fi
 	
+example:
+	$(MAKE) -C ./example_app
 
 clean:
 	if [ -d $(OUT) ]; then \
