@@ -5,6 +5,7 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <errno.h>
+#include <poll.h>
 
 void LiteFS_PrintF(const char* cPtrFormat, ...)
 {
@@ -57,3 +58,7 @@ exit:
     return iFSize;
 }
 
+int LiteFS_Poll(LITEFS_POLLFD_T* arrPollFDs, uint16 uiNumFDs, int timeout)
+{
+    return poll((struct pollfd*) arrPollFDs, uiNumFDs, timeout);
+}

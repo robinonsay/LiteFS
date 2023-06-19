@@ -15,6 +15,13 @@
 
 #include "litefs_dtypes.h"
 
+typedef struct LITEFS_POLLFD_TAG
+{
+    int iFD;
+    short iEvents;
+    short rEvents;
+} LITEFS_POLLFD_T;
+
 void LiteFS_PrintF(const char* cPtrFormat, ...);
 void LiteFS_PError(const char* cPtrStr);
 int LiteFS_Open(const char* restrict cPtrPathname, int iFlags);
@@ -22,4 +29,6 @@ int32 LiteFS_Read(int iFD, void* vPtrBuffer, uint32 count);
 int32 LiteFS_Write(int iFD, void* vPtrBuffer, uint32 count);
 int LiteFS_Close(int iFD);
 int64 LiteFS_FileSize(int iFD);
+int LiteFS_Poll(LITEFS_POLLFD_T* arrPollFDs, uint16 uiNumFDs, int timeout);
+
 #endif
