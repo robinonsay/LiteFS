@@ -9,6 +9,7 @@
 
 #define true (1)
 #define false (0)
+#define NULL ((void*) 0)
 
 typedef signed char int8;
 typedef unsigned char uint8;

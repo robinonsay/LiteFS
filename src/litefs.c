@@ -10,13 +10,13 @@ static struct GLOBALS_TAG
 
 int main(int argc, char const *argv[])
 {
-    void* app_handle;
-    uint32 (*AppInit)();
-    uint32 (*AppMain)();
-    void (*AppExit)();
-    char* cPtrLdrErr;
-    int iConfigFD;
-    uint8 uiNumApps;
+    void* app_handle = NULL;
+    uint32 (*AppInit)() = NULL;
+    uint32 (*AppMain)() = NULL;
+    void (*AppExit)() = NULL;
+    char* cPtrLdrErr = NULL;
+    int iConfigFD = -1;
+    uint8 uiNumApps =;
     char cPtrArrAppPaths[MAX_NUM_APPS][MAX_PATH_LEN] = {0};
     uint16 uiIndex = 0;
     int32 iStatus = 0;

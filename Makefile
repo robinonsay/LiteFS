@@ -8,7 +8,7 @@ CFLAGS := --debug -std=c99 -pedantic -Wall
 LINK_FLAGS :=
 LIB_OUT := $(OUT)/lib
 LINK_DIRS := -L$(LIB_OUT)
-LINK_LIBS := -lLiteFS
+LINK_LIBS := -lLiteFS -lrt
 INCLUDE_DIR := -I./osw -I./src
 SRC:= ./src/litefs.c
 LIB_SRCS := $(filter-out $(SRC), $(wildcard ./src/*.c))

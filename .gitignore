@@ -2,4 +2,4 @@
 *.so
 *.o
 *.dSYM
-out/*
+out
